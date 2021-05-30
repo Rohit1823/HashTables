@@ -104,6 +104,24 @@ namespace HashTables
             Console.WriteLine("Word '{0}' appears {1} times", value, frequency);
             return frequency;
         }
+        public void RemoveValue(V value)
+        {
+            foreach (LinkedList<keyValue<K, V>> list in items)
+            {
+                if (list == null)
+                    continue;
+                foreach (keyValue<K, V> obj in list)
+                {
+                    if (obj.Equals(null))
+                        continue;
+                    if (obj.value.Equals(value))
+                    {
+                        Remove(obj.key);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
 
