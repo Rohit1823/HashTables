@@ -17,6 +17,7 @@ namespace HashTables
         {
             public k key { get; set; }
             public v value { get; set; }
+            public int Frequency { get; set; }
         }
 
         protected LinkedList<keyValue<K, V>> GetLinkedlist(int position)
@@ -59,6 +60,7 @@ namespace HashTables
             keyValue<K, V> item = new keyValue<K, V>() { key = key, value = value };
 
             linkedlist.AddLast(item);
+            Console.WriteLine(item.value + " :- is Added at Index : " + item.key);
         }
         public void Remove(K key)
         {
@@ -83,7 +85,7 @@ namespace HashTables
             }
         }
 
-        public void GetFrequency(V value)
+        public int GetFrequency(V value)
         {
             int frequency = 0;
             foreach (LinkedList<keyValue<K, V>> list in items)
@@ -98,7 +100,9 @@ namespace HashTables
                         frequency++;
                 }
             }
-            Console.WriteLine("Frequency of {0} is {1}", value, frequency);
+            Console.WriteLine(" ");
+            Console.WriteLine("Word '{0}' appears {1} times", value, frequency);
+            return frequency;
         }
     }
 }
